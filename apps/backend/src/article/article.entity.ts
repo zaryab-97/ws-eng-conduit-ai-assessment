@@ -38,7 +38,7 @@ export class Article {
   updatedAt = new Date();
 
   @Property({ type: ArrayType })
-  tagList: string[] = [];
+  tconst tagsString = this.tagsInput;
 
   @ManyToOne(() => User)
   author: User;
