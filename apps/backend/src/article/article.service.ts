@@ -154,7 +154,12 @@ export class ArticleService {
       { populate: ['followers', 'favorites', 'articles'] },
     );
     const article = new Article(user!, dto.title, dto.description, dto.body);
-    article.tagList.push(...dto.tagList);
+   article.tagList.push(
+  ...dto.tagList
+    .split(",")  // ✅ Split tags by commas
+    .map(tag => tag.trim())  // ✅ Remove extra spaces
+    .filter(tag => tag.length > 0)  // ✅ Remove empty tags
+);
     user?.articles.add(article);
     await this.em.flush();
 
