@@ -38,7 +38,7 @@ export class Article {
   updatedAt = new Date();
 
   @Property({ type: ArrayType })
-  tagList: string[] = [];
+ const tagsString = this.tagsInput; // This is where tags are initially gathered from the form
 
   @ManyToOne(() => User)
   author: User;
